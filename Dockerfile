@@ -1,5 +1,9 @@
+FROM maven:3.3-jdk-8
+ADD . /usr/src/mymaven
+RUN mvn clean install
+
 # Pull base image 
-From tomcat:8-jre8 
+FROM tomcat:8-jre8 
 
 # Maintainer 
 MAINTAINER "Marjook@gmail.com" 
