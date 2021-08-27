@@ -14,16 +14,20 @@ pipeline {
                 sh 'mvn -B -DskipTests clean package'
             }
         }
-        stage('Start Tomcat') { 
-        docker {
-            image 'tomcat:8-jre8'
-            }
-        }
-        stage('Build'){
-            steps{
-             sh './webapp.war /usr/local/tomcat/webapps'  
-          }
-        }   
+               
     }
+   node {
+    stage "Create build output"
+    
+    // Make the output directory.
+    sh "mkdir -p output"
+
+    
+    stage "Archive build output"
+    
+    // Archive the build output artifacts.
+    archiveArtifacts artifacts: 'output/*.*'
+}
+        
 }
  
