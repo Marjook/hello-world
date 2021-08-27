@@ -1,7 +1,7 @@
 pipeline {
   environment {
     registry = "marjook/jenkintest"
-    registryCredential = ‘dockerhub’
+    registryCredential = "dockerhub"
   }
   agent any
   stages {
