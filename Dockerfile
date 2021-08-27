@@ -8,5 +8,5 @@ FROM tomcat:8-jre8
 
 # Maintainer 
 MAINTAINER "Marjook@gmail.com" 
-COPY ./webapp.war /usr/local/tomcat/webapps
+COPY ./webapp/target/webapp.war /usr/local/tomcat/webapps
 
