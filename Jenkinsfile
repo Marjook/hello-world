@@ -14,13 +14,12 @@ pipeline {
                 sh 'mvn -B -DskipTests clean package'
             }
         }
-    }
-         docker {
+          docker {
             image 'tomcat:8-jre8'
             }
           steps{
              sh './webapp.war /usr/local/tomcat/webapps'  
         }
     }
-    
+}
  
