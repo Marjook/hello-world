@@ -1,33 +1,21 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3.3-jdk-8'
-            args '-v /root/.m2:/root/.m2'
+  environment {
+    registry = "gustavoapolinario/docker-test"
+    registryCredential = ‘dockerhub’
+  }
+  agent any
+  stages {
+    stage('Cloning Git') {
+      steps {
+        git 'https://github.com/gustavoapolinario/microservices-node-example-todo-frontend.git'
+      }
+    }
+    stage('Building image') {
+      steps{
+        script {
+          docker.build registry + ":$BUILD_NUMBER"
         }
+      }
     }
-    options {
-        skipStagesAfterUnstable()
-    }
-    stages {
-        stage('Build') {
-            steps {
-                sh 'mvn -B -DskipTests clean package'
-            }
-        }
-               
-    }
-   node {
-    stage "Create build output"
-    
-    // Make the output directory.
-    sh "mkdir -p output"
-
-    
-    stage "Archive build output"
-    
-    // Archive the build output artifacts.
-    archiveArtifacts artifacts: 'output/*.*'
+  }
 }
-        
-}
- 
