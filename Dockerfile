@@ -1,5 +1,6 @@
 FROM maven:3.3-jdk-8
 ADD . /usr/src/mymaven
+WORKDIR /usr/src/mymaven
 RUN mvn clean install
 
 # Pull base image 
