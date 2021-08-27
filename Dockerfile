@@ -4,9 +4,9 @@ WORKDIR /usr/src/mymaven
 RUN mvn clean install
 
 # Pull base image 
-FROM tomcat:8-jre8 
+#FROM tomcat:8-jre8 
 
 # Maintainer 
-MAINTAINER "Marjook@gmail.com" 
-COPY ./webapp/target/webapp.war /usr/local/tomcat/webapps
+#MAINTAINER "Marjook@gmail.com" 
+#COPY ./webapp/target/webapp.war /usr/local/tomcat/webapps
 
