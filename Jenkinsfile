@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "gustavoapolinario/docker-test"
+    registry = "marjook/jenkintest"
     registryCredential = ‘dockerhub’
   }
   agent any
