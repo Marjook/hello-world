@@ -1,7 +1,7 @@
 FROM maven:3.3-jdk-8 AS build
 COPY . /usr/src/mymaven
 WORKDIR /usr/src/mymaven
-RUN ls- la
+RUN ls -la
 RUN mvn clean package
 
 # Pull base image 
