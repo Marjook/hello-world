@@ -3,11 +3,11 @@
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
-  name: cicdtest-deployment
+  name: cicd-web-app-deployment
 spec:
   selector:
     matchLabels:
-      app: cicdtest
+      app: cicd-web-app-devops-project
   replicas: 2 # tells deployment to run 2 pods matching the template
   strategy:
     type: RollingUpdate
@@ -18,11 +18,11 @@ spec:
   template:
     metadata:
       labels:
-        app: cicdtest
+        app: cicd-web-app-devops-project
     spec:
       containers:
-      - name: cicdtest-deploy
-        image: marjook/cicdtesting
+      - name: cicd-web-app-devops-project
+        image: marjook/cicdtest-kaniko
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -30,14 +30,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: cicdtest-service
+  name: cicd-web-app-service
   labels:
-    app: cicdtest
+    app: cicd-web-app-devops-project
 spec:
   selector:
-    app: cicdtest
+    app: cicd-web-app-devops-project
   type: LoadBalancer
   ports:
     - port: 8080
       targetPort: 8080
-      nodePort: 31200
+      nodePort: 31201
