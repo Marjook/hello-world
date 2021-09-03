@@ -1,7 +1,8 @@
 FROM maven:3.3-jdk-8 AS build
-RUN apt install git
-RUN ls -la
-#RUN mvn clean package
+COPY . /usr/src/mymaven
+WORKDIR /usr/src/mymaven
+RUN ls- la
+RUN mvn clean package
 
 # Pull base image 
 FROM tomcat:8-jre8 
