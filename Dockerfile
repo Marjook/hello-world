@@ -6,4 +6,4 @@ RUN mvn clean package
 
 # Pull base image 
 FROM tomcat:8-jre8 
-COPY --from=build ./webapp/target/webapp.war /usr/local/tomcat/webapps
+COPY --from=build /usr/src/mymaven/webapp/target/webapp.war /usr/local/tomcat/webapps
