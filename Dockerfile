@@ -1,5 +1,5 @@
 FROM maven:3.3-jdk-8 AS build
-RUN apt add -U git
+RUN apt add git
 RUN ls -la
 #RUN mvn clean package
 
