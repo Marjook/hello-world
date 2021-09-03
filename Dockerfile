@@ -1,4 +1,6 @@
 FROM maven:3.3-jdk-8 AS build
+RUN ls -la
+RUN cd /hello-world
 RUN mvn clean package
 
 # Pull base image 
