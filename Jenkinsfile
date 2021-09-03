@@ -13,7 +13,7 @@ pipeline {
     stage('Deploy App') {
       steps {
         script {
-          kubernetesDeploy(configs: "valaxydeploy.yaml", kubeconfigId: "mykubeconfig")
+          kubernetesDeploy(configs: "deploy.yaml", kubeconfigId: "mykubeconfig")
         }
       }
     }
