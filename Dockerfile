@@ -1,6 +1,6 @@
 FROM maven:3.3-jdk-8 AS build
-RUN ls -la ./workspace
-RUN cd /hello-world
+RUN apk add --no-cache git
+RUN git clone --depth 1 "https://github.com/Marjook/hello-world.git" .
 RUN mvn clean package
 
 # Pull base image 
